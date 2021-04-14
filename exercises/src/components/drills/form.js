@@ -46,7 +46,16 @@ export class Profile extends Component {
 */
 
 const Form = () => {
-    const [profile, setProfile] = useState({});
+    const [profile, setProfile] = useState({
+        name: '',
+        age: 0,
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+
+        setProfile((prevState) => ({ ...prevState, [name]: value }));
+    };
 
     return (
         <div>
@@ -57,14 +66,16 @@ const Form = () => {
                 <input
                     type='text'
                     name='name'
+                    value={profile.name}
                     id='name'
-                    // onChange={handleNameChange()}
+                    onChange={(e) => handleChange(e)}
                 />
                 <input
                     type='text'
                     name='age'
+                    value={profile.age}
                     id='age'
-                    // onChange={handleAgeChange()}
+                    onChange={(e) => handleChange(e)}
                 />
             </form>
         </div>
